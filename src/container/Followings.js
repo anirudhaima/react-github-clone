@@ -45,7 +45,7 @@ const Followings = (props) => {
         axios({
             method: 'get',
             url: `https://api.github.com/users/${username}/following?page=${page}&per_page=${per_page}`,
-            headers: { 'Authorization': "Token cebc43234dc7e89490959c283d6035aa098a3682"}
+            headers: { 'Authorization': `Token ${process.env.REACT_APP_TOKEN}`}
         })
             .then(({ data }) => {
                 let newData = data.map((item) => {

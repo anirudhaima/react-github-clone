@@ -22,7 +22,7 @@ const Home = () => {
     const { username } = useParams()
     const context = useContext(UserContext);
     const appContext = useContext(AppContext);
-console.log(appContext)
+
     useEffect(() => {
         getUser()
     }, [username]);
@@ -32,7 +32,7 @@ console.log(appContext)
         axios({
             method: 'get',
             url: `https://api.github.com/users/${username}`,
-            headers: { 'Authorization': "Token cebc43234dc7e89490959c283d6035aa098a3682"}
+            headers: { 'Authorization': `Token ${process.env.REACT_APP_TOKEN}`}
         }).then(({ data }) => {
             setUserData(data);
             appContext.setLoaded(false);
